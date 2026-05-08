@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book Details | BookSaw</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/modern-theme.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+
+    <div id="header-wrap">
+        <div class="top-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="social-links">
+                            <ul>
+                                <li><a href="#"><i class="icon icon-facebook"></i></a></li>
+                                <li><a href="#"><i class="icon icon-twitter"></i></a></li>
+                                <li><a href="#"><i class="icon icon-youtube-play"></i></a></li>
+                                <li><a href="#"><i class="icon icon-behance-square"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="right-element">
+                            <a href="#" class="user-account for-buy"><i class="icon icon-user"></i><span id="userGreeting">Account</span></a>
+                            <a href="cart.html" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header id="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="main-logo">
+                            <a href="index.html"><img src="images/main-logo.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <nav id="navbar">
+                            <div class="main-menu stellarnav">
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="index.html">Home</a></li>
+                                    <li class="menu-item"><a href="index.html#featured-books" class="nav-link">Featured</a></li>
+                                    <li class="menu-item"><a href="index.html#popular-books" class="nav-link">Popular</a></li>
+                                    <li class="menu-item"><a href="index.html#special-offer" class="nav-link">Offer</a></li>
+                                    <li class="menu-item"><a href="index.html#latest-blog" class="nav-link">Articles</a></li>
+                                </ul>
+                                <div class="hamburger">
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Book Hero Section -->
+    <section id="bookHero" class="book-hero">
+        <div class="container">
+            <div class="book-hero-inner">
+                <img id="bookImage" src="images/product-placeholder.jpg" alt="Book Cover" class="hero-book-cover">
+                <div class="hero-book-info">
+                    <span id="bookCategory" class="badge bg-primary mb-2">Category</span>
+                    <h1 id="bookTitle" class="display-4 font-serif">Loading Book...</h1>
+                    <p id="bookAuthor" class="lead mb-3">by Author</p>
+                    <h2 id="bookPrice" class="mb-4" style="color: var(--brand-mocha);">$-.--</h2>
+                    <div class="hero-actions">
+                        <button id="addToCartBtn" class="btn btn-modern-mocha btn-large me-2">
+                            <i class="icon icon-shopping-cart me-2"></i>Add to Cart
+                        </button>
+                        <button id="reviewActionBtn" class="btn btn-modern-blue btn-large" style="display:none;">
+                            <i class="icon icon-star me-2"></i>Write Review
+                        </button>
+                    </div>
+                    <p id="reviewEligibilityMsg" class="small mt-3 text-light opacity-75"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <div class="book-details-container">
+            <!-- Main Content -->
+            <div class="book-main-content">
+                <div class="modern-card p-5 mb-5">
+                    <h3 class="mb-4" style="font-family: var(--heading-font); border-bottom: 2px solid var(--brand-mocha); display: inline-block; padding-bottom: 5px;">Description</h3>
+                    <p id="bookDescription" class="lead text-muted" style="line-height: 1.8;">
+                        Loading description...
+                    </p>
+                </div>
+
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="book-sidebar">
+                <div class="modern-card p-4">
+                    <h4 class="mb-4" style="font-family: var(--heading-font);">Reader Reviews</h4>
+                    <div id="bookReviewsList" class="reviews-list">
+                        <div class="text-center py-4">
+                            <div class="spinner-border text-primary" role="status"></div>
+                            <p class="text-muted mt-2">Loading reviews...</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer id="footer" class="py-5 bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="images/main-logo.png" alt="logo" class="footer-logo mb-4" style="filter: brightness(0) invert(1);">
+                    <p class="text-muted">The best place to find your next great read. Curated collections and world-wide delivery.</p>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>Quick Links</h5>
+                            <ul class="list-unstyled text-muted">
+                                <li><a href="index.html" class="text-muted">Home</a></li>
+                                <li><a href="#" class="text-muted">About Us</a></li>
+                                <li><a href="#" class="text-muted">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Categories</h5>
+                            <ul class="list-unstyled text-muted">
+                                <li>Fiction</li>
+                                <li>Technology</li>
+                                <li>Business</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/navbar-auth.js"></script>
+    <script src="js/book-details.js"></script>
+</body>
+</html>
