@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: onlinebookstore
+
+server:
+  port: 8091
