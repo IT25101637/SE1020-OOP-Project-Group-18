@@ -1,0 +1,198 @@
+:root {
+    --brand-mocha: #C5A992;
+    --brand-mocha-dark: #a08470;
+    --brand-blue: #2fa0e3;
+    --brand-blue-dark: #2080b5;
+    --brand-dark: #2f2f2f;
+    --brand-light: #F3F2EC;
+    --text-muted: #757575;
+    --glass-white: rgba(255, 255, 255, 0.8);
+    --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Modern Card Styles */
+.modern-card {
+    background: white;
+    border: none;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modern-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Sections */
+.inner-page-hero {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    padding: 80px 0;
+    margin-bottom: -60px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.hero-title {
+    font-family: var(--heading-font);
+    font-size: 3.5rem;
+    color: var(--brand-dark);
+    margin-bottom: 10px;
+}
+
+/* Avatar Components */
+.avatar-circle {
+    width: 120px;
+    height: 120px;
+    background: var(--brand-mocha);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0 auto 20px;
+    border: 5px solid white;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Buttons */
+.btn-modern-mocha {
+    background: var(--brand-mocha);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-modern-mocha:hover {
+    background: var(--brand-mocha-dark);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.btn-modern-blue {
+    background: var(--brand-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-modern-blue:hover {
+    background: var(--brand-blue-dark);
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* Form Styling */
+.modern-form .form-label {
+    font-weight: 600;
+    color: var(--brand-mocha);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.modern-form .form-control {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    background: #fcfcfc;
+    transition: all 0.3s ease;
+}
+
+.modern-form .form-control:focus {
+    border-color: var(--brand-mocha);
+    box-shadow: 0 0 0 4px rgba(197, 169, 146, 0.1);
+    background: white;
+}
+
+/* Book Details Layout */
+.book-details-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.book-main-content {
+    flex: 2;
+}
+
+.book-sidebar {
+    flex: 1;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.book-hero {
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    position: relative;
+    color: white;
+    margin-top: -30px;
+}
+
+.book-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.book-hero-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-book-cover {
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-book-info h1 {
+    color: white;
+    margin: 0;
+}
+
+/* Styled Tabs */
+.modern-tabs .nav-link {
+    border: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 12px 24px;
+    border-bottom: 3px solid transparent;
+}
+
+.modern-tabs .nav-link.active {
+    color: var(--brand-mocha);
+    background: transparent;
+    border-bottom-color: var(--brand-mocha);
+}
+
+/* Sidebar Review List */
+.sidebar-review-item {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
