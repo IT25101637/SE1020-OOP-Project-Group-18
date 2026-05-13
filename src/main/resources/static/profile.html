@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>My Profile - BookSaw Book Store</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="author" content="">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/modern-theme.css">
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+
+	<div id="header-wrap">
+
+		<div class="top-content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="social-links">
+							<ul>
+								<li>
+									<a href="#"><i class="icon icon-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="icon icon-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="icon icon-youtube-play"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="icon icon-behance-square"></i></a>
+								</li>
+							</ul>
+						</div><!--social-links-->
+					</div>
+					<div class="col-md-6">
+						<div class="right-element">
+							<a href="#" class="user-account for-buy"><i
+									class="icon icon-user"></i><span id="userGreeting">Account</span></a>
+							<a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0
+									$)</span></a>
+
+							<div class="action-menu">
+
+								<div class="search-bar">
+									<a href="#" class="search-button search-toggle" data-selector="#header-wrap">
+										<i class="icon icon-search"></i>
+									</a>
+									<form role="search" method="get" class="search-box">
+										<input class="search-field text search-input" placeholder="Search"
+											type="search">
+									</form>
+								</div>
+							</div>
+
+						</div><!--top-right-->
+					</div>
+
+				</div>
+			</div>
+		</div><!--top-content-->
+
+		<header id="header">
+			<div class="container-fluid">
+				<div class="row">
+
+					<div class="col-md-2">
+						<div class="main-logo">
+							<a href="index.html"><img src="images/main-logo.png" alt="logo"></a>
+						</div>
+
+					</div>
+
+					<div class="col-md-10">
+
+						<nav id="navbar">
+							<div class="main-menu stellarnav">
+								<ul class="menu-list">
+									<li class="menu-item"><a href="index.html#featured-books" class="nav-link">Featured</a></li>
+									<li class="menu-item"><a href="index.html#popular-books" class="nav-link">Popular</a></li>
+									<li class="menu-item"><a href="index.html#special-offer" class="nav-link">Offer</a></li>
+									<li class="menu-item"><a href="index.html#latest-blog" class="nav-link">Articles</a></li>
+									<li class="menu-item active"><a href="#" class="nav-link">Profile</a></li>
+								</ul>
+
+								<div class="hamburger">
+									<span class="bar"></span>
+									<span class="bar"></span>
+									<span class="bar"></span>
+								</div>
+
+							</div>
+						</nav>
+
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+	</div><!--header-wrap-->
+
+	<section class="inner-page-hero">
+		<div class="container">
+			<div class="hero-content">
+				<h1 class="hero-title">Account Settings</h1>
+				<p class="text-muted">Manage your personal information, book purchases, and reviews.</p>
+			</div>
+		</div>
+	</section>
+
+	<section id="profile-section" class="py-5" style="margin-top: -30px; position: relative; z-index: 2;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-9">
+					<div class="modern-card">
+						<div class="card-body p-0">
+							<div id="loadingText" class="p-5 text-center text-muted">
+								<div class="spinner-border text-primary mb-3" role="status"></div>
+								<p>Loading your profile...</p>
+							</div>
+
+							<!-- Profile Display -->
+							<div id="profileDisplay" style="display: none;">
+								<!-- User Avatar & Header -->
+								<div class="text-center p-5 border-bottom" style="background: #fafaf9;">
+									<div class="avatar-circle" id="userAvatar">U</div>
+									<h2 class="mb-1" id="profileGreetName" style="font-family: var(--heading-font);">Welcome!</h2>
+									<p class="text-muted" id="profileEmailDisplay">-</p>
+									<div class="d-flex justify-content-center gap-2 mt-3">
+										<span class="badge rounded-pill bg-light text-dark border px-3 py-2">
+											<i class="icon icon-clipboard me-1" style="color: var(--brand-mocha);"></i> 
+											<span id="displayPointsHero">0</span> Points
+										</span>
+									</div>
+								</div>
+
+								<div class="p-5">
+									<div class="row">
+										<div class="col-md-12">
+											<h4 class="mb-4" style="color: var(--brand-mocha); font-family: var(--heading-font);">Information</h4>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div class="modern-form">
+												<label class="form-label">Username</label>
+												<div class="form-control-plaintext border-bottom pb-2" id="displayUsername">-</div>
+											</div>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div class="modern-form">
+												<label class="form-label">Email</label>
+												<div class="form-control-plaintext border-bottom pb-2" id="displayEmail">-</div>
+											</div>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div class="modern-form">
+												<label class="form-label">First Name</label>
+												<div class="form-control-plaintext border-bottom pb-2" id="displayFirstName">-</div>
+											</div>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div class="modern-form">
+												<label class="form-label">Last Name</label>
+												<div class="form-control-plaintext border-bottom pb-2" id="displayLastName">-</div>
+											</div>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div class="modern-form">
+												<label class="form-label">Phone Number</label>
+												<div class="form-control-plaintext border-bottom pb-2" id="displayPhoneNumber">-</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="mt-5">
+										<ul class="nav modern-tabs border-bottom mb-4" id="profileFeatureTabs" role="tablist">
+											<li class="nav-item" role="presentation">
+												<button class="nav-link active" type="button" data-tab-target="myBooksTab">
+													<i class="icon icon-clipboard me-2"></i>My Books
+												</button>
+											</li>
+											<li class="nav-item" role="presentation">
+												<button class="nav-link" type="button" data-tab-target="myReviewsTab">
+													<i class="icon icon-star me-2"></i>My Reviews
+												</button>
+											</li>
+										</ul>
+										<div class="tab-content pt-2">
+											<div id="myBooksTab" class="profile-tab-pane">
+												<div id="myBooksList" class="text-muted">Loading purchased books...</div>
+											</div>
+											<div id="myReviewsTab" class="profile-tab-pane d-none">
+												<div id="myReviewsList" class="text-muted">Loading your reviews...</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row mt-5 pt-4 border-top">
+										<div class="col-md-6 mb-3">
+											<button type="button" class="btn btn-modern-mocha w-100" id="editProfileBtn">
+												<i class="icon icon-edit me-2"></i>Edit Profile
+											</button>
+										</div>
+										<div class="col-md-6 mb-3">
+											<button type="button" class="btn btn-outline-danger w-100 py-2 border-2" id="deleteAccountBtn">
+												<i class="icon icon-trash me-2"></i>Delete Account
+											</button>
+										</div>
+									</div>
+
+									<div class="text-center mt-4 pt-3">
+										<a href="index.html" class="btn btn-link text-muted text-decoration-none">← Back to Home</a>
+										<button id="logoutBtn" class="btn btn-outline-primary ms-3 px-4">Logout</button>
+									</div>
+								</div>
+							</div>
+
+							<!-- Error Message -->
+							<div id="errorMessage" class="alert alert-danger mx-5 mt-4" style="display: none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-4">
+
+					<div class="footer-item">
+						<div class="company-brand">
+							<img src="images/main-logo.png" alt="logo" class="footer-logo">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis sed ptibus liberolectus
+								nonet psryroin. Amet sed lorem posuere sit iaculis amet, ac urna. Adipiscing fames
+								semper erat ac in suspendisse iaculis.</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>About Us</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="#">vision</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">articles </a>
+							</li>
+							<li class="menu-item">
+								<a href="#">careers</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">service terms</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">donate</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Discover</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="#">Home</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">Books</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">Authors</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">Subjects</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">Advanced Search</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>My account</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="login.html">Sign In</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">View Cart</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">My Wishtlist</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">Track My Order</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Help</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="#">Help center</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">Report a problem</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">Suggesting edits</a>
+							</li>
+							<li class="menu-item">
+								<a href="#">Contact us</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- / row -->
+
+		</div>
+	</footer>
+
+	<div id="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="copyright">
+						<div class="row">
+
+							<div class="col-md-6">
+								<p>© 2022 All rights reserved. Free HTML Template by <a
+										href="https://www.templatesjungle.com/" target="_blank">TemplatesJungle</a></p>
+							</div>
+
+							<div class="col-md-6">
+								<div class="social-links align-right">
+									<ul>
+										<li>
+											<a href="#"><i class="icon icon-facebook"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="icon icon-twitter"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="icon icon-youtube-play"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="icon icon-behance-square"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div><!--grid-->
+
+				</div><!--footer-bottom-content-->
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/navbar-auth.js"></script>
+	<script src="js/cart.js"></script>
+
+	<script>
+		let currentUser = null;
+
+		function getUserEmail() {
+			const sessionEmail = sessionStorage.getItem('currentUserEmail');
+			// Only use sessionStorage — the profile requires a real authenticated session.
+			// A bare URL ?email= param is NOT sufficient to authenticate the user.
+			return sessionEmail || null;
+		}
+
+		function renderStars(rating) {
+			const value = Number(rating) || 0;
+			return '★'.repeat(Math.max(0, Math.min(5, value))) + '☆'.repeat(5 - Math.max(0, Math.min(5, value)));
+		}
+
+		function escapeHtml(value) {
+			return String(value || '')
+				.replace(/&/g, '&amp;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#39;');
+		}
+
+		function setupFeatureTabs() {
+			const buttons = document.querySelectorAll('#profileFeatureTabs button[data-tab-target]');
+			buttons.forEach(btn => {
+				btn.addEventListener('click', function () {
+					buttons.forEach(x => x.classList.remove('active'));
+					btn.classList.add('active');
+
+					document.querySelectorAll('.profile-tab-pane').forEach(pane => pane.classList.add('d-none'));
+					const target = document.getElementById(btn.getAttribute('data-tab-target'));
+					if (target) {
+						target.classList.remove('d-none');
+					}
+				});
+			});
+		}
+
+		async function loadMyBooks() {
+			const list = document.getElementById('myBooksList');
+			if (!list) {
+				console.error('myBooksList element not found');
+				return;
+			}
+			if (!currentUser || !currentUser.userId) {
+				list.innerHTML = '<div class="text-muted">Please login to see your books.</div>';
+				return;
+			}
+
+			try {
+				const response = await fetch(`/api/payments/user/${encodeURIComponent(currentUser.userId)}/books`);
+				const data = await response.json();
+
+				if (!response.ok || data.status !== 'success') {
+					list.innerHTML = '<div class="alert alert-warning">Could not load purchased books.</div>';
+					return;
+				}
+
+				if (!data.books || data.books.length === 0) {
+					list.innerHTML = '<div class="text-muted">No purchased books yet.</div>';
+					return;
+				}
+
+			// Get user's reviews to check which books they've reviewed
+			const reviewsRes = await fetch(`/api/reviews/user/${encodeURIComponent(currentUser.userId)}`);
+			const reviewsData = await reviewsRes.json();
+			const userReviews = reviewsData.status === 'success' ? (reviewsData.reviews || []) : [];
+
+			list.innerHTML = data.books.map(book => {
+				const userReview = userReviews.find(r => r.bookId === book.bookId);
+				const purchaseDate = new Date(book.lastPurchasedAt).toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'short',
+					day: 'numeric'
+				});
+
+				return `
+					<div class="border rounded p-3 mb-3 bg-white">
+						<div class="d-flex align-items-center justify-content-between">
+							<div style="flex: 1;">
+								<div style="font-weight:700;">${escapeHtml(book.title || 'Unknown Title')}</div>
+								<div class="text-muted small">${escapeHtml(book.author || 'Unknown Author')}</div>
+								<div class="small text-muted">Purchased Qty: ${book.totalPurchasedQuantity}</div>
+								<div class="small text-muted">Last Purchased: ${purchaseDate}</div>
+								${userReview ? `
+									<div class="small" style="color: #2fa0e3; margin-top: 5px;">
+										<strong>✓ You reviewed this book</strong> <span style="color: #f0b429;">${'★'.repeat(userReview.rating)}${'☆'.repeat(5 - userReview.rating)}</span>
+									</div>
+								` : ''}
+							</div>
+							<div>
+								<a class="btn btn-sm btn-outline-primary mb-2" href="book-details.html?bookId=${encodeURIComponent(book.bookId)}">Details & Reviews</a>
+								<button class="btn btn-sm" style="background:#2fa0e3;color:#fff;border:none;" onclick="openReviewPrompt('${book.bookId}', ${JSON.stringify(book.title || 'Book')})">
+									${userReview ? 'Edit Review' : 'Review'}
+								</button>
+							</div>
+						</div>
+					</div>
+				`;
+			}).join('');
+		} catch (error) {
+			console.error('Error loading books:', error);
+			list.innerHTML = '<div class="alert alert-warning">Could not load purchased books.</div>';
+		}
+	}
+
+	async function loadMyReviews() {
+			const list = document.getElementById('myReviewsList');
+			if (!list) {
+				console.error('myReviewsList element not found');
+				return;
+			}
+			if (!currentUser || !currentUser.userId) {
+				list.innerHTML = '<div class="text-muted">Please login to see your reviews.</div>';
+				return;
+			}
+
+			try {
+				const response = await fetch(`/api/reviews/user/${encodeURIComponent(currentUser.userId)}`);
+				const data = await response.json();
+
+				if (!response.ok || data.status !== 'success') {
+					list.innerHTML = '<div class="alert alert-warning">Could not load reviews.</div>';
+					return;
+				}
+
+				if (!data.reviews || data.reviews.length === 0) {
+					list.innerHTML = '<div class="text-muted">You have not posted any reviews yet.</div>';
+					return;
+				}
+
+				list.innerHTML = data.reviews.map(review => `
+					<div class="border rounded p-3 mb-3 bg-white">
+						<div class="d-flex justify-content-between">
+							<div style="font-weight:700;">${escapeHtml(review.bookTitle || 'Book')}</div>
+							<div style="color:#f0b429;">${renderStars(review.rating)}</div>
+						</div>
+						<div class="small text-muted mb-2">${new Date(review.updatedAt).toLocaleString()}</div>
+						<div>${escapeHtml(review.comment)}</div>
+						<div class="mt-2">
+						<button class="btn btn-sm btn-outline-secondary" onclick="editReview('${review.reviewId}', '${review.bookId}')">Edit</button>
+							<button class="btn btn-sm btn-outline-danger" onclick="deleteReview('${review.reviewId}')">Delete</button>
+							<a class="btn btn-sm btn-outline-primary" href="book-details.html?bookId=${encodeURIComponent(review.bookId)}">View Book</a>
+						</div>
+					</div>
+				`).join('');
+			} catch (error) {
+				console.error('Error loading reviews:', error);
+				list.innerHTML = '<div class="alert alert-warning">Could not load reviews.</div>';
+			}
+		}
+
+		async function openReviewPrompt(bookId, bookTitle) {
+			if (!currentUser || !currentUser.userId) {
+				alert('Please login first.');
+				return;
+			}
+
+			// Check if user has already reviewed this book
+			try {
+				const myReviewsResponse = await fetch(`/api/reviews/user/${encodeURIComponent(currentUser.userId)}`);
+				const myReviewsData = await myReviewsResponse.json();
+				const existing = myReviewsData.status === 'success'
+					? (myReviewsData.reviews || []).find(r => r.bookId === bookId)
+					: null;
+
+				if (existing) {
+					// Edit existing review
+					window.location.href = `review.html?bookId=${encodeURIComponent(bookId)}&reviewId=${encodeURIComponent(existing.reviewId)}`;
+				} else {
+					// Create new review
+					window.location.href = `review.html?bookId=${encodeURIComponent(bookId)}`;
+				}
+			} catch (error) {
+				console.error('Error checking reviews:', error);
+				// Fallback: just go to review page
+				window.location.href = `review.html?bookId=${encodeURIComponent(bookId)}`;
+			}
+		}
+
+		function editReview(reviewId, bookId) {
+			if (!currentUser || !currentUser.userId) {
+				return;
+			}
+			window.location.href = `review.html?bookId=${encodeURIComponent(bookId)}&reviewId=${encodeURIComponent(reviewId)}`;
+		}
+
+		async function deleteReview(reviewId) {
+			if (!currentUser || !currentUser.userId) {
+				return;
+			}
+
+			if (!confirm('Delete this review?')) return;
+			const response = await fetch(`/api/reviews/user/${encodeURIComponent(currentUser.userId)}/${encodeURIComponent(reviewId)}`, {
+				method: 'DELETE'
+			});
+			const data = await response.json();
+			if (!response.ok || data.status !== 'success') {
+				alert(data.message || 'Failed to delete review');
+				return;
+			}
+			await loadMyReviews();
+		}
+
+		function setupButtonListeners(email) {
+			const editBtn = document.getElementById('editProfileBtn');
+			if (editBtn) {
+				editBtn.addEventListener('click', function() {
+					window.location.href = 'edit-profile.html?email=' + encodeURIComponent(email);
+				});
+			}
+
+			const deleteBtn = document.getElementById('deleteAccountBtn');
+			if (deleteBtn) {
+				deleteBtn.addEventListener('click', function() {
+					if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+						deleteAccount(email);
+					}
+				});
+			}
+
+			const logoutBtn = document.getElementById('logoutBtn');
+			if (logoutBtn) {
+				logoutBtn.addEventListener('click', function(e) {
+					e.preventDefault();
+					sessionStorage.removeItem('currentUserEmail');
+					sessionStorage.removeItem('currentUserId');
+					sessionStorage.removeItem('currentUsername');
+					alert('You have been logged out');
+					window.location.href = 'index.html';
+				});
+			}
+		}
+
+		async function loadUserProfile(email) {
+			try {
+				const response = await fetch(`/api/users/profile/${encodeURIComponent(email)}`, {
+					method: 'GET',
+					headers: { 'Content-Type': 'application/json' }
+				});
+
+				const data = await response.json();
+				if (response.ok && data.status === 'success') {
+					const user = data.user;
+					currentUser = user;
+
+					// Update sessionStorage with fresh data from the API (session must already exist)
+					if (sessionStorage.getItem('currentUserEmail')) {
+						sessionStorage.setItem('currentUserEmail', user.email);
+						sessionStorage.setItem('currentUserId', user.userId);
+						sessionStorage.setItem('currentUsername', user.username);
+					}
+
+					const loadingText = document.getElementById('loadingText');
+					if (loadingText) loadingText.style.display = 'none';
+					
+					const profileDisplay = document.getElementById('profileDisplay');
+					if (profileDisplay) profileDisplay.style.display = 'block';
+
+					const displayUsername = document.getElementById('displayUsername');
+					if (displayUsername) displayUsername.textContent = user.username;
+					
+					const displayEmail = document.getElementById('displayEmail');
+					if (displayEmail) displayEmail.textContent = user.email;
+					
+					const displayFirstName = document.getElementById('displayFirstName');
+					if (displayFirstName) displayFirstName.textContent = user.firstName;
+					
+					const displayLastName = document.getElementById('displayLastName');
+					if (displayLastName) displayLastName.textContent = user.lastName;
+					
+					const displayPhoneNumber = document.getElementById('displayPhoneNumber');
+					if (displayPhoneNumber) displayPhoneNumber.textContent = user.phoneNumber;
+					
+					const displayPoints = document.getElementById('displayPointsHero');
+					if (displayPoints) displayPoints.textContent = user.points;
+					
+					const userGreeting = document.getElementById('userGreeting');
+					if (userGreeting) userGreeting.textContent = user.username;
+
+					const profileGreetName = document.getElementById('profileGreetName');
+					if (profileGreetName) profileGreetName.textContent = `Hello, ${user.firstName || user.username}!`;
+
+					const profileEmailDisplay = document.getElementById('profileEmailDisplay');
+					if (profileEmailDisplay) profileEmailDisplay.textContent = user.email;
+
+					const userAvatar = document.getElementById('userAvatar');
+					if (userAvatar) {
+						const initials = ((user.firstName?.charAt(0) || '') + (user.lastName?.charAt(0) || '')).toUpperCase() || user.username.charAt(0).toUpperCase();
+						userAvatar.textContent = initials;
+					}
+
+					setupButtonListeners(email);
+					setupFeatureTabs();
+					await loadMyBooks();
+					await loadMyReviews();
+				} else {
+					showError(data.message || 'Failed to load profile');
+				}
+			} catch (error) {
+				console.error('Error:', error);
+				showError('An error occurred while loading your profile');
+			}
+		}
+
+		async function deleteAccount(email) {
+			try {
+				const response = await fetch(`/api/users/${encodeURIComponent(email)}`, {
+					method: 'DELETE',
+					headers: { 'Content-Type': 'application/json' }
+				});
+
+				const data = await response.json();
+				if (response.ok && data.status === 'success') {
+					alert('Your account has been deleted successfully');
+					sessionStorage.removeItem('currentUserEmail');
+					sessionStorage.removeItem('currentUserId');
+					sessionStorage.removeItem('currentUsername');
+					window.location.href = 'index.html';
+				} else {
+					showError(data.message || 'Failed to delete account');
+				}
+			} catch (error) {
+				console.error('Error:', error);
+				showError('An error occurred while deleting your account');
+			}
+		}
+
+		function showError(message) {
+			const loadingText = document.getElementById('loadingText');
+			if (loadingText) loadingText.style.display = 'none';
+			
+			const errorDiv = document.getElementById('errorMessage');
+			if (errorDiv) {
+				errorDiv.textContent = message;
+				errorDiv.style.display = 'block';
+			} else {
+				alert(message);
+			}
+		}
+
+		window.openReviewPrompt = openReviewPrompt;
+		window.editReview = editReview;
+		window.deleteReview = deleteReview;
+
+		document.addEventListener('DOMContentLoaded', async function() {
+			const email = getUserEmail();
+			if (!email) {
+				// No active session — redirect to login page
+				window.location.href = 'login.html';
+				return;
+			}
+			await loadUserProfile(email);
+		});
+	</script>
+
+</body>
+
+</html>
