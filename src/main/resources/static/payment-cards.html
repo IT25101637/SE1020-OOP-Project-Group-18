@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Manage Payment Cards | BookSaw</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap">
+	<link rel="stylesheet" type="text/css" href="css/modern-override.css">
+    <link rel="stylesheet" type="text/css" href="css/modern-theme.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+
+    <div id="header-wrap">
+        <div class="top-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="social-links">
+                            <ul>
+                                <li><a href="#"><i class="icon icon-facebook"></i></a></li>
+                                <li><a href="#"><i class="icon icon-twitter"></i></a></li>
+                                <li><a href="#"><i class="icon icon-youtube-play"></i></a></li>
+                                <li><a href="#"><i class="icon icon-behance-square"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="right-element">
+                            <a href="#" class="user-account for-buy"><i class="icon icon-user"></i><span id="userGreeting">Account</span></a>
+                            <a href="cart.html" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header id="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="main-logo">
+                            <a href="index.html"><img src="images/main-logo.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <nav id="navbar">
+                            <div class="main-menu stellarnav">
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="index.html">Home</a></li>
+                                    <li class="menu-item"><a href="index.html#featured-books" class="nav-link">Featured</a></li>
+                                    <li class="menu-item"><a href="index.html#popular-books" class="nav-link">Popular</a></li>
+                                    <li class="menu-item"><a href="index.html#special-offer" class="nav-link">Offer</a></li>
+                                    <li class="menu-item"><a href="index.html#latest-blog" class="nav-link">Articles</a></li>
+                                </ul>
+                                <div class="hamburger">
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <section class="inner-page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Payment Methods</h1>
+                <p class="text-muted">Securely manage your credit and debit cards for faster checkout.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div id="paymentCardsContent" class="container py-5" style="margin-top: -30px; position: relative; z-index: 2;">
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Add Card Form -->
+            <div class="col-md-8">
+                <div class="modern-card p-5 mb-5">
+                    <h3 class="mb-4" style="color: var(--brand-mocha); font-family: var(--heading-font);">
+                        <i class="fas fa-plus-circle me-2"></i>Add New Card
+                    </h3>
+                    <form id="addCardForm" class="modern-form">
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-credit-card text-muted"></i></span>
+                                    <input type="text" id="cardNumber" class="form-control border-start-0" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                                </div>
+                                <div class="validation-feedback"></div>
+                                <div class="error-message"></div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <label for="cardholderName" class="form-label">Cardholder Name</label>
+                                <input type="text" id="cardholderName" class="form-control" placeholder="John Doe" required>
+                                <div class="error-message"></div>
+                            </div>
+
+                            <div class="col-md-3 mb-4">
+                                <label for="expiryMonth" class="form-label">Expiry Month</label>
+                                <select id="expiryMonth" class="form-control" required>
+                                    <option value="">MM</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <div class="error-message"></div>
+                            </div>
+
+                            <div class="col-md-3 mb-4">
+                                <label for="expiryYear" class="form-label">Expiry Year</label>
+                                <select id="expiryYear" class="form-control" required>
+                                    <option value="">YYYY</option>
+                                </select>
+                                <div class="error-message"></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-top d-flex gap-2">
+                            <button type="submit" class="btn btn-modern-mocha flex-grow-1 py-3">
+                                <i class="fas fa-save me-2"></i>Add Card to Wallet
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary px-4">Clear</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Saved Cards section -->
+                <div class="modern-card p-5">
+                    <h3 class="mb-4" style="color: var(--brand-mocha); font-family: var(--heading-font);">
+                        <i class="fas fa-wallet me-2"></i>My Cards
+                    </h3>
+                    <div id="cardsList" class="row g-3">
+                        <!-- Cards will be populated here by JS -->
+                        <div class="text-center py-5 text-muted">
+                            <i class="fas fa-circle-notch fa-spin fa-2x mb-3"></i>
+                            <p>Loading your cards...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="checkout.html" class="btn btn-link text-muted text-decoration-none">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Checkout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="py-5 bg-dark text-light mt-5">
+        <div class="container text-center">
+            <img src="images/main-logo.png" alt="logo" class="footer-logo mb-4" style="filter: brightness(0) invert(1); max-height: 40px;">
+            <p class="text-muted">&copy; 2024 BookSaw. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/navbar-auth.js"></script>
+    <script src="js/payment-card-manager.js"></script>
+</body>
+</html>
