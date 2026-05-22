@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book Details | BookSaw</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap">
+	<link rel="stylesheet" type="text/css" href="css/modern-override.css">
+    <link rel="stylesheet" type="text/css" href="css/modern-theme.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+
+    <div id="header-wrap">
+        <div class="top-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="social-links">
+                            <ul>
+                                <li><a href="#"><i class="icon icon-facebook"></i></a></li>
+                                <li><a href="#"><i class="icon icon-twitter"></i></a></li>
+                                <li><a href="#"><i class="icon icon-youtube-play"></i></a></li>
+                                <li><a href="#"><i class="icon icon-behance-square"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="right-element">
+                            <a href="#" class="user-account for-buy"><i class="icon icon-user"></i><span id="userGreeting">Account</span></a>
+                            <a href="cart.html" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header id="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="main-logo">
+                            <a href="index.html"><img src="images/main-logo.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <nav id="navbar">
+                            <div class="main-menu stellarnav">
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="index.html">Home</a></li>
+                                    <li class="menu-item"><a href="index.html#featured-books" class="nav-link">Featured</a></li>
+                                    <li class="menu-item"><a href="index.html#popular-books" class="nav-link">Popular</a></li>
+                                    <li class="menu-item"><a href="index.html#latest-blog" class="nav-link">Articles</a></li>
+                                </ul>
+                                <div class="hamburger">
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-center justify-content-end">
+                        <div class="nav-cart-btn-wrap" style="position:relative;display:inline-flex;">
+                            <button id="nav-view-cart-btn" onclick="CartDrawer && CartDrawer.open()" style="display:inline-flex;align-items:center;gap:7px;background:#c8a96e;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:.9rem;font-weight:600;cursor:pointer;letter-spacing:.02em;font-family:inherit;transition:background .2s;white-space:nowrap;" onmouseover="this.style.background='#b3924f'" onmouseout="this.style.background='#c8a96e'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                View Cart
+                            </button>
+                            <span id="nav-cart-badge-main" style="display:none;position:absolute;top:-7px;right:-7px;background:#e8433a;color:#fff;border-radius:50%;width:19px;height:19px;font-size:.62rem;font-weight:700;align-items:center;justify-content:center;line-height:1;pointer-events:none;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Book Hero Section -->
+    <section id="bookHero" class="book-hero">
+        <div class="container">
+            <div class="book-hero-inner">
+                <img id="bookImage" src="images/product-placeholder.jpg" alt="Book Cover" class="hero-book-cover">
+                <div class="hero-book-info">
+                    <span id="bookCategory" class="badge bg-primary mb-2">Category</span>
+                    <h1 id="bookTitle" class="display-4 font-serif">Loading Book...</h1>
+                    <p id="bookAuthor" class="lead mb-3">by Author</p>
+                    <h2 id="bookPrice" class="mb-4" style="color: var(--brand-mocha);">$-.--</h2>
+                    <div class="hero-actions">
+                        <button id="addToCartBtn" class="btn btn-modern-mocha btn-large me-2">
+                            <i class="icon icon-shopping-cart me-2"></i>Add to Cart
+                        </button>
+                        <button id="reviewActionBtn" class="btn btn-modern-blue btn-large" style="display:none;">
+                            <i class="icon icon-star me-2"></i>Write Review
+                        </button>
+                    </div>
+                    <p id="reviewEligibilityMsg" class="small mt-3 text-light opacity-75"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <div class="book-details-container">
+            <!-- Main Content -->
+            <div class="book-main-content">
+                <div class="modern-card p-5 mb-5">
+                    <h3 class="mb-4" style="font-family: var(--heading-font); border-bottom: 2px solid var(--brand-mocha); display: inline-block; padding-bottom: 5px;">Description</h3>
+                    <p id="bookDescription" class="lead text-muted" style="line-height: 1.8;">
+                        Loading description...
+                    </p>
+                </div>
+
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="book-sidebar">
+                <div class="modern-card p-4">
+                    <h4 class="mb-4" style="font-family: var(--heading-font);">Reader Reviews</h4>
+                    <div id="bookReviewsList" class="reviews-list">
+                        <div class="text-center py-4">
+                            <div class="spinner-border text-primary" role="status"></div>
+                            <p class="text-muted mt-2">Loading reviews...</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="footer-item">
+<div class="company-brand">
+<img alt="logo" class="footer-logo" src="images/main-logo.png"/>
+<p>Your home for quality books across every genre. Browse, discover, and read — anytime, anywhere.</p>
+</div>
+</div>
+</div>
+<div class="col-md-2">
+<div class="footer-menu">
+<h5>Donate</h5>
+<ul class="menu-list">
+ <a>"We are building a hospital wing at Lady Ridgeway Hospital in aid of children with heart diseases & critical illnesses.100% goes to saving lives."</a>
+<li class="menu-item">
+<a href="https://www.littlehearts.lk/donate/#">Little Hearts</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-md-2">
+<div class="footer-menu">
+<h5>Discover</h5>
+<ul class="menu-list">
+<li class="menu-item">
+<a href="index.html">Home</a>
+</li>
+<li class="menu-item">
+<a href="index.html#featured-books">Featured</a>
+</li>
+<li class="menu-item">
+<a href="index.html#popular-books">Popular</a>
+</li>
+<li class="menu-item">
+<a href="index.html#latest-blog">Articles</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-md-2">
+<div class="footer-menu">
+<h5>My account</h5>
+<ul class="menu-list">
+<li class="menu-item">
+<a href= "login.html">Sign In</a>
+</li>
+<li class="menu-item">
+<a href="cart.html">View Cart</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-md-2">
+<div class="footer-menu">
+<h5>Contact Us</h5>
+<ul class="menu-list">
+<li class="menu-item">
+<a>+94-754532453</a>
+</li>
+<li class="menu-item">
+<a >+94-764532453</a>
+</li>
+<li class="menu-item">
+<a href="mailto:someone@example.com">Send email</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- / row -->
+</div>
+</footer>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/cart-drawer.js"></script>
+    <script src="js/navbar-auth.js"></script>
+    <script src="js/book-details.js"></script>
+    <script>
+    (function() {
+      function syncMainCartBadge(count) {
+        var badge = document.getElementById('nav-cart-badge-main');
+        if (!badge) return;
+        if (count > 0) {
+          badge.textContent = count > 99 ? '99+' : count;
+          badge.style.display = 'flex';
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+      function mirrorBadge() {
+        var src = document.getElementById('cart-nav-badge');
+        if (src) {
+          syncMainCartBadge(src.style.display === 'none' ? 0 : parseInt(src.textContent) || 0);
+        }
+        setTimeout(mirrorBadge, 400);
+      }
+      document.addEventListener('DOMContentLoaded', function() { setTimeout(mirrorBadge, 800); });
+    })();
+    </script>
+</body>
+</html>

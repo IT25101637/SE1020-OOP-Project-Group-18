@@ -102,6 +102,64 @@ public class BookService {
 		return dtos;
 	}
 
+	// READ ALL BOOKS SORTED BY PRICE
+	public Object[] getAllBooksSortedByPrice() {
+		Object[] books = bookRepository.findAllSortedByPrice();
+		BookDTO[] dtos = new BookDTO[books.length];
+		for (int i = 0; i < books.length; i++) {
+			dtos[i] = convertBookToDTO((Book) books[i]);
+		}
+		return dtos;
+	}
+
+	// READ ALL BOOKS SORTED BY NAME
+	public Object[] getAllBooksSortedByName() {
+		Object[] books = bookRepository.findAllSortedByName();
+		BookDTO[] dtos = new BookDTO[books.length];
+		for (int i = 0; i < books.length; i++) {
+			dtos[i] = convertBookToDTO((Book) books[i]);
+		}
+		return dtos;
+	}
+
+	// READ BOOKS BY CATEGORY SORTED BY PRICE
+	public Object[] getBooksByCategorySortedByPrice(String category) {
+		if (category == null || category.trim().isEmpty()) {
+			return new BookDTO[0];
+		}
+		if (category.equalsIgnoreCase("all-genre") || category.equalsIgnoreCase("All Genre")) {
+			return getAllBooksSortedByPrice();
+		}
+		if (!isValidCategory(category)) {
+			return new BookDTO[0];
+		}
+		Object[] books = bookRepository.findByCategorySortedByPrice(category);
+		BookDTO[] dtos = new BookDTO[books.length];
+		for (int i = 0; i < books.length; i++) {
+			dtos[i] = convertBookToDTO((Book) books[i]);
+		}
+		return dtos;
+	}
+
+	// READ BOOKS BY CATEGORY SORTED BY NAME
+	public Object[] getBooksByCategorySortedByName(String category) {
+		if (category == null || category.trim().isEmpty()) {
+			return new BookDTO[0];
+		}
+		if (category.equalsIgnoreCase("all-genre") || category.equalsIgnoreCase("All Genre")) {
+			return getAllBooksSortedByName();
+		}
+		if (!isValidCategory(category)) {
+			return new BookDTO[0];
+		}
+		Object[] books = bookRepository.findByCategorySortedByName(category);
+		BookDTO[] dtos = new BookDTO[books.length];
+		for (int i = 0; i < books.length; i++) {
+			dtos[i] = convertBookToDTO((Book) books[i]);
+		}
+		return dtos;
+	}
+
 	// UPDATE BOOK
 	public BookDTO updateBook(String bookId, String title, String author, double price, String category,
 			String description, String imageUrl, boolean isFeatured) {

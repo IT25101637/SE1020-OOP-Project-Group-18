@@ -5,6 +5,66 @@
 
 const API_BASE_URL = 'http://localhost:8091/api/books';
 
+// Track current sort per category tab
+const currentSort = {};
+
+/**
+ * Build the API endpoint for a given category and sort option.
+ * @param {string} category
+ * @param {string} sort - 'default' | 'price' | 'name'
+ */
+function buildEndpoint(category, sort) {
+  const base = category === 'all-genre'
+    ? `${API_BASE_URL}`
+    : `${API_BASE_URL}/category/${category}`;
+
+  if (sort === 'price') return `${API_BASE_URL}/category/${category}/sort/price`;
+  if (sort === 'name')  return `${API_BASE_URL}/category/${category}/sort/name`;
+  return base;
+}
+
+/**
+ * Render a sort toolbar for the given category tab container.
+ */
+function createSortBar(category, tabContent) {
+  const existing = tabContent.querySelector('.sort-bar');
+  if (existing) existing.remove();
+
+  const bar = document.createElement('div');
+  bar.className = 'sort-bar';
+  bar.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap;';
+
+  const label = document.createElement('span');
+  label.textContent = 'Sort by:';
+  label.style.cssText = 'font-size:13px;color:#888;font-weight:600;';
+  bar.appendChild(label);
+
+  const options = [
+    { value: 'default', label: 'Default' },
+    { value: 'price',   label: 'Price ↑' },
+    { value: 'name',    label: 'Name A–Z' },
+  ];
+
+  const active = currentSort[category] || 'default';
+
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.textContent = opt.label;
+    btn.dataset.sort = opt.value;
+    btn.style.cssText = `
+      padding:4px 12px;border-radius:20px;border:1px solid #c8a96e;background:${opt.value === active ? '#c8a96e' : '#fff'};
+      color:${opt.value === active ? '#fff' : '#c8a96e'};font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;
+    `;
+    btn.addEventListener('click', () => {
+      currentSort[category] = opt.value;
+      loadBooksByCategory(category);
+    });
+    bar.appendChild(btn);
+  });
+
+  return bar;
+}
+
 /**
  * Load featured books and render in the featured section
  */
@@ -63,71 +123,79 @@ async function loadFeaturedBooks() {
 }
 
 /**
- * Load books by category and render in the tab
+ * Load books by category (with optional sort) and render in the tab
  */
 async function loadBooksByCategory(category) {
   try {
-    const endpoint = category === 'all-genre' 
-      ? `${API_BASE_URL}` 
-      : `${API_BASE_URL}/category/${category}`;
+    const sort = currentSort[category] || 'default';
+    const endpoint = buildEndpoint(category, sort);
     
     const response = await fetch(endpoint);
     const data = await response.json();
     
+    const tabContent = document.querySelector(`#${category}[data-tab-content]`);
+    if (!tabContent) return;
+
+    // Always insert/refresh the sort bar first
+    const sortBar = createSortBar(category, tabContent);
+
     if (data.status === 'success' && data.books && data.books.length > 0) {
-      const tabContent = document.querySelector(`#${category}[data-tab-content]`);
-      if (tabContent) {
-        tabContent.innerHTML = '';
+      tabContent.innerHTML = '';
+      tabContent.appendChild(sortBar);
+      
+      // Limit to 4 books per category for cleaner display
+      const booksToShow = data.books.slice(0, 4);
+      const totalBooks = data.books.length;
+      
+      // Create rows with 4 columns each
+      let rowHtml = '<div class="row">';
+      booksToShow.forEach((book, index) => {
+        rowHtml += createBookCard(book);
         
-        // Limit to 4 books per category for cleaner display
-        const booksToShow = data.books.slice(0, 4);
-        const totalBooks = data.books.length;
-        
-        // Create rows with 4 columns each
-        let rowHtml = '<div class="row">';
-        booksToShow.forEach((book, index) => {
-          rowHtml += createBookCard(book);
-          
-          // Close row and start new one after every 4 items
-          if ((index + 1) % 4 === 0 && index + 1 < booksToShow.length) {
-            rowHtml += '</div><div class="row">';
-          }
-        });
-        rowHtml += '</div>';
-        
-        tabContent.innerHTML = rowHtml;
-
-        // Add "View all" link if there are more books, with a working click handler
-        if (totalBooks > 4) {
-          const viewAllRow = document.createElement('div');
-          viewAllRow.className = 'row mt-3 text-center';
-          viewAllRow.innerHTML = `<p class="text-muted">Showing 4 of ${totalBooks} books. <a href="#" class="view-all-link text-decoration-none">View all →</a></p>`;
-
-          viewAllRow.querySelector('.view-all-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            // Render ALL books
-            let allRowHtml = '<div class="row">';
-            data.books.forEach((book, index) => {
-              allRowHtml += createBookCard(book);
-              if ((index + 1) % 4 === 0 && index + 1 < data.books.length) {
-                allRowHtml += '</div><div class="row">';
-              }
-            });
-            allRowHtml += '</div>';
-            tabContent.innerHTML = allRowHtml;
-            attachAddToCartHandlers(tabContent);
-          });
-
-          tabContent.appendChild(viewAllRow);
+        // Close row and start new one after every 4 items
+        if ((index + 1) % 4 === 0 && index + 1 < booksToShow.length) {
+          rowHtml += '</div><div class="row">';
         }
+      });
+      rowHtml += '</div>';
+      
+      const booksContainer = document.createElement('div');
+      booksContainer.innerHTML = rowHtml;
+      tabContent.appendChild(booksContainer);
 
-        attachAddToCartHandlers(tabContent);
+      // Add "View all" link if there are more books, with a working click handler
+      if (totalBooks > 4) {
+        const viewAllRow = document.createElement('div');
+        viewAllRow.className = 'row mt-3 text-center';
+        viewAllRow.innerHTML = `<p class="text-muted">Showing 4 of ${totalBooks} books. <a href="#" class="view-all-link text-decoration-none" style="color:#c8a96e;font-weight:600;">View all →</a></p>`;
+
+        viewAllRow.querySelector('.view-all-link').addEventListener('click', (e) => {
+          e.preventDefault();
+          // Render ALL books
+          let allRowHtml = '<div class="row">';
+          data.books.forEach((book, index) => {
+            allRowHtml += createBookCard(book);
+            if ((index + 1) % 4 === 0 && index + 1 < data.books.length) {
+              allRowHtml += '</div><div class="row">';
+            }
+          });
+          allRowHtml += '</div>';
+          booksContainer.innerHTML = allRowHtml;
+          attachAddToCartHandlers(tabContent);
+          viewAllRow.remove();
+        });
+
+        tabContent.appendChild(viewAllRow);
       }
+
+      attachAddToCartHandlers(tabContent);
     } else {
-      const tabContent = document.querySelector(`#${category}[data-tab-content]`);
-      if (tabContent) {
-        tabContent.innerHTML = '<div class="row"><p class="text-center">No books available in this category.</p></div>';
-      }
+      tabContent.innerHTML = '';
+      tabContent.appendChild(sortBar);
+      const empty = document.createElement('div');
+      empty.className = 'row';
+      empty.innerHTML = '<p class="text-center">No books available in this category.</p>';
+      tabContent.appendChild(empty);
     }
   } catch (error) {
     console.error(`Error loading books for category ${category}:`, error);

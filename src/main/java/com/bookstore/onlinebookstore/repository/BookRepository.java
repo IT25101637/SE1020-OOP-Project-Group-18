@@ -3,6 +3,7 @@ package com.bookstore.onlinebookstore.repository;
 import com.bookstore.onlinebookstore.model.Book;
 import com.bookstore.onlinebookstore.util.FileHandler;
 import com.bookstore.onlinebookstore.util.LinkedListUtil;
+import com.bookstore.onlinebookstore.util.SortUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,26 @@ public class BookRepository {
 			}
 		}
 		return categoryBooks.toArray();
+	}
+
+	// READ - Get all books sorted by price (ascending)
+	public Object[] findAllSortedByPrice() {
+		return SortUtil.sortByPrice(books.toArray());
+	}
+
+	// READ - Get all books sorted by name (ascending)
+	public Object[] findAllSortedByName() {
+		return SortUtil.sortByName(books.toArray());
+	}
+
+	// READ - Get books by category sorted by price (ascending)
+	public Object[] findByCategorySortedByPrice(String category) {
+		return SortUtil.sortByPrice(findByCategory(category));
+	}
+
+	// READ - Get books by category sorted by name (ascending)
+	public Object[] findByCategorySortedByName(String category) {
+		return SortUtil.sortByName(findByCategory(category));
 	}
 
 	// UPDATE - Update book

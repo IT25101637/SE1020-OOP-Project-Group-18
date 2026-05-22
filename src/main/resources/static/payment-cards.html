@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Checkout | BookSaw</title>
+    <title>Manage Payment Cards | BookSaw</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,92 +73,99 @@
         </header>
     </div>
 
-    <!-- Page Header Hero -->
     <section class="inner-page-hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Checkout</h1>
-                <p class="text-muted">Review your order and complete your purchase securely.</p>
+                <h1 class="hero-title">Payment Methods</h1>
+                <p class="text-muted">Securely manage your credit and debit cards for faster checkout.</p>
             </div>
         </div>
     </section>
 
-    <!-- Main Checkout Content -->
-    <div class="container py-5" style="margin-top: -40px; position: relative; z-index: 2;">
-        <div class="row g-4">
-            <!-- Left Column: Order Form -->
-            <div class="col-lg-8">
-                <!-- Order Items Review -->
-                <div class="modern-card p-4 mb-4">
-                    <h3 class="mb-4" style="color: var(--brand-mocha); font-family: var(--heading-font); border-bottom: 2px solid var(--brand-mocha); display: inline-block; padding-bottom: 5px;">
-                        <i class="fas fa-box me-2"></i>Order Items
+    <!-- Main Content -->
+    <div id="paymentCardsContent" class="container py-5" style="margin-top: -30px; position: relative; z-index: 2;">
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Add Card Form -->
+            <div class="col-md-8">
+                <div class="modern-card p-5 mb-5">
+                    <h3 class="mb-4" style="color: var(--brand-mocha); font-family: var(--heading-font);">
+                        <i class="fas fa-plus-circle me-2"></i>Add New Card
                     </h3>
-                    <div id="orderItemsList"></div>
-                </div>
-
-                <!-- Billing Address -->
-                <div class="modern-card p-4 mb-4">
-                    <h3 class="mb-4" style="color: var(--brand-mocha); font-family: var(--heading-font); border-bottom: 2px solid var(--brand-mocha); display: inline-block; padding-bottom: 5px;">
-                        <i class="fas fa-map-marker-alt me-2"></i>Billing Address
-                    </h3>
-                    <form id="checkoutForm" class="modern-form">
+                    <form id="addCardForm" class="modern-form">
                         <div class="row">
-                            <div class="col-12 mb-4">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" id="address" class="form-control" placeholder="Street address" required>
+                            <div class="col-md-12 mb-4">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-credit-card text-muted"></i></span>
+                                    <input type="text" id="cardNumber" class="form-control border-start-0" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                                </div>
+                                <div class="validation-feedback"></div>
+                                <div class="error-message"></div>
                             </div>
+                            
                             <div class="col-md-6 mb-4">
-                                <label for="city" class="form-label">City</label>
-                                <input type="text" id="city" class="form-control" placeholder="City" required>
+                                <label for="cardholderName" class="form-label">Cardholder Name</label>
+                                <input type="text" id="cardholderName" class="form-control" placeholder="John Doe" required>
+                                <div class="error-message"></div>
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <label for="zipCode" class="form-label">Zip Code</label>
-                                <input type="text" id="zipCode" class="form-control" placeholder="Zip Code" required>
+
+                            <div class="col-md-3 mb-4">
+                                <label for="expiryMonth" class="form-label">Expiry Month</label>
+                                <select id="expiryMonth" class="form-control" required>
+                                    <option value="">MM</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <div class="error-message"></div>
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <label for="state" class="form-label">State</label>
-                                <input type="text" id="state" class="form-control" placeholder="State" required>
+
+                            <div class="col-md-3 mb-4">
+                                <label for="expiryYear" class="form-label">Expiry Year</label>
+                                <select id="expiryYear" class="form-control" required>
+                                    <option value="">YYYY</option>
+                                </select>
+                                <div class="error-message"></div>
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <label for="country" class="form-label">Country</label>
-                                <input type="text" id="country" class="form-control" placeholder="Country" value="United States" required>
-                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-top d-flex gap-2">
+                            <button type="submit" class="btn btn-modern-mocha flex-grow-1 py-3">
+                                <i class="fas fa-save me-2"></i>Add Card to Wallet
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary px-4">Clear</button>
                         </div>
                     </form>
                 </div>
 
-                <!-- Payment Method Selection -->
-                <div class="modern-card p-4 mb-4">
-                    <h3 class="mb-4" style="color: var(--brand-mocha); font-family: var(--heading-font); border-bottom: 2px solid var(--brand-mocha); display: inline-block; padding-bottom: 5px;">
-                        <i class="fas fa-credit-card me-2"></i>Payment Method
+                <!-- Saved Cards section -->
+                <div class="modern-card p-5">
+                    <h3 class="mb-4" style="color: var(--brand-mocha); font-family: var(--heading-font);">
+                        <i class="fas fa-wallet me-2"></i>My Cards
                     </h3>
-                    <div id="paymentMethodsList"></div>
-                    <div class="error-message" id="paymentError"></div>
-                    <div class="mt-4 pt-3 border-top">
-                        <button type="button" class="btn btn-outline-primary" id="addPaymentCardBtn">
-                            <i class="fas fa-plus me-2"></i>Manage Cards
-                        </button>
+                    <div id="cardsList" class="row g-3">
+                        <!-- Cards will be populated here by JS -->
+                        <div class="text-center py-5 text-muted">
+                            <i class="fas fa-circle-notch fa-spin fa-2x mb-3"></i>
+                            <p>Loading your cards...</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Right Column: Order Summary -->
-            <div class="col-lg-4">
-                <div class="modern-card p-4 sticky-top" style="top: 20px;">
-                    <h3 class="mb-4" style="color: var(--brand-mocha); font-family: var(--heading-font); border-bottom: 2px solid var(--brand-mocha); display: inline-block; padding-bottom: 5px;">
-                        <i class="fas fa-receipt me-2"></i>Order Summary
-                    </h3>
-                    <div id="orderSummary" class="mt-3"></div>
-                    <div class="error-message" id="checkoutError"></div>
-                    
-                    <div class="mt-4 pt-4 border-top">
-                        <button id="completePaymentBtn" class="btn btn-modern-mocha btn-large w-100 py-3">
-                            <i class="fas fa-lock me-2"></i>Complete Payment
-                        </button>
-                    </div>
-                    <div class="text-center mt-3 small text-muted">
-                        <i class="fas fa-shield-alt me-1"></i> Secure SSL Encrypted Payment
-                    </div>
+                <div class="text-center mt-5">
+                    <a href="checkout.html" class="btn btn-link text-muted text-decoration-none">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Checkout
+                    </a>
                 </div>
             </div>
         </div>
@@ -177,6 +184,6 @@
     <script src="js/plugins.js"></script>
     <script src="js/script.js"></script>
     <script src="js/navbar-auth.js"></script>
-    <script src="js/checkout.js"></script>
+    <script src="js/payment-card-manager.js"></script>
 </body>
 </html>
